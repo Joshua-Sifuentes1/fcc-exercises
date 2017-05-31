@@ -1,6 +1,11 @@
 $(document).ready(function() {
-	// Only change code below this line.
 	$("#getMessage").on("click", function() {
-		$(".message").html("This changed.");
+		var html = "";
+		var randNum = Math.floor(Math.random() * (101 - 0 + 1));
+		$.getJSON("/data/quotes.json", function(quotes){
+			html += quotes[randNum].quote;
+			$(".message").html(html);
+		});
+
 	});
 });
